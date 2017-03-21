@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="xdi2.core.ContextNode" %>
+<%@ page import="xdi2.core.LiteralNode" %>
+<%@ page import="xdi2.core.util.XDIAddressUtil" %>
 <%@ page import="xdi2.core.syntax.XDIAddress" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -34,17 +36,11 @@
 		<div style="float:right;""><input style="padding:10px" type="button" value="Connect"></div>
 
 		<p><b>XDI Address:</b> <%= contextNode.getXDIAddress() %></p>
-		<p><i>First Name:</i> <%= contextNode.getDeepContextNode(XDIAddress.create("#dime<#first><#name>")).getLiteralData() %></p>
-		<p><i>Last Name:</i> <%= contextNode.getDeepContextNode(XDIAddress.create("#dime<#last><#name>")).getLiteralData() %></p>
-		<p><i>Email:</i> <%= contextNode.getDeepContextNode(XDIAddress.create("#dime<#email>")).getLiteralData() %></p>
-		<hr>
-		<p><i>Profile:</i> <%= contextNode.getDeepContextNode(XDIAddress.create("#dime#profile<#name>")).getLiteralData() %></p>
 
-		<p><i>Tags:</i>
-		<% for (ContextNode tag : contextNode.getDeepContextNode(XDIAddress.create("#dime#profile[<#tag>]")).getContextNodes()) { %>
-			<u><%= tag.getLiteralData() %></u>
+		<% for (LiteralNode l : contextNode.getAllLiteralNodes()) { %>
+		
+			<b><%= XDIAddressUtil.localXDIAddress(l.getContextNode().getXDIAddress(), -1) %></b>:&nbsp;<%= l.getLiteralData() %><br>
 		<% } %>
-		</p>
 
 	</div>
 

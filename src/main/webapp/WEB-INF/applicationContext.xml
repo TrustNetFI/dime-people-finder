@@ -85,9 +85,31 @@
 		<property name="graph" ref="graph" />
 		<property name="interceptors">
 			<util:list>
+				<bean class="xdi2.messaging.container.interceptor.impl.BootstrapInterceptor">
+					<property name="bootstrapOwner" value="+!:did:sov:VpumqBbcVi86RvpEo8lvOn" />
+					<property name="bootstrapRootLinkContract" value="true" />
+					<property name="bootstrapPublicLinkContract" value="true" />
+					<property name="bootstrapConnectLinkContract" value="false" />
+					<property name="bootstrapSendLinkContract" value="false" />
+					<property name="bootstrapTimestamp" value="true" />
+					<property name="bootstrapGraph">
+						<value>
+							({$self}/$public)$contract$do/$get/{$self}$msg$encrypt$keypair&lt;$public&gt;&lt;$key&gt;
+							({$self}/$public)($do/$get){$self}$msg$encrypt$keypair/$is#/{}
+							({$self}/$public)$contract$do/$get/{$self}$msg$sig$keypair&lt;$public&gt;&lt;$key&gt;
+							({$self}/$public)($do/$get){$self}$msg$sig$keypair/$is#/{}
+						</value>
+					</property>
+					<property name="bootstrapMessageEnvelope">
+						<value>
+							($anon[$msg]*!1$do/$do$keypair){$self}$msg$encrypt$keypair/$is#/$rsa$2048
+							($anon[$msg]*!1$do/$do$keypair){$self}$msg$sig$keypair/$is#/$rsa$2048
+						</value>
+					</property>
+				</bean>
 				<bean class="xdi2.messaging.container.interceptor.impl.ToInterceptor" />
 				<bean class="xdi2.messaging.container.interceptor.impl.RefInterceptor" />
-				<bean class="xdi2.messaging.container.interceptor.impl.security.signature.SignatureInterceptor">
+<!-- 				<bean class="xdi2.messaging.container.interceptor.impl.security.signature.SignatureInterceptor">
 					<property name="signatureValidators">
 						<util:list>
 							<bean class="xdi2.core.security.ec25519.signature.validate.EC25519CloudNumberPublicKeySignatureValidator" />
@@ -96,7 +118,7 @@
 							</bean>
 						</util:list>
 					</property>
-				</bean>
+				</bean> -->
 				<bean class="xdi2.messaging.container.interceptor.impl.security.digest.DigestInterceptor">
 					<property name="digestValidators">
 						<util:list>
@@ -105,7 +127,7 @@
 						</util:list>
 					</property>
 				</bean>
-				<bean class="xdi2.messaging.container.interceptor.impl.linkcontract.LinkContractInterceptor" />
+<!-- 				<bean class="xdi2.messaging.container.interceptor.impl.linkcontract.LinkContractInterceptor" /> -->
 				<bean class="xdi2.messaging.container.interceptor.impl.signing.SigningInterceptor">
 					<property name="signatureCreator">
 						<bean class="xdi2.core.security.signature.create.RSAGraphPrivateKeySignatureCreator" />

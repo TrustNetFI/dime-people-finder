@@ -6,3 +6,5 @@ log4j.log
 /.settings/
 /bin/
 /target/
+graph.xdi
+

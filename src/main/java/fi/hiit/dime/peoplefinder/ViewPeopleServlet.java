@@ -1,6 +1,7 @@
 package fi.hiit.dime.peoplefinder;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,6 +29,12 @@ public class ViewPeopleServlet extends HttpServlet implements ApplicationContext
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		List<ContextNode> list = new IteratorListMaker<ContextNode> (graph.getRootContextNode().getContextNodes()).list();
+		
+		for (Iterator<ContextNode> i = list.iterator(); i.hasNext(); ) {
+			
+			ContextNode c = i.next();
+			if (! c.getXDIAddress().toString().startsWith("=!:uuid:")) i.remove();
+		}
 
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("viewpeople.jsp").forward(request, response);
