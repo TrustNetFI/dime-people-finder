@@ -89,6 +89,19 @@
 
 	</build>
 
+        <repositories>
+                <repository>
+                        <id>XDI2-releases</id>
+                        <name>XDI2-releases</name>
+                        <url>https://artifactory.xdi2.org/xdi2-releases-local</url>
+                </repository>
+                <repository>
+                        <id>XDI2-snapshots</id>
+                        <name>XDI2-snapshots</name>
+                        <url>https://artifactory.xdi2.org/xdi2-snapshot-local</url>
+                </repository>
+        </repositories>
+
 	<dependencies>
 
 		<dependency>
