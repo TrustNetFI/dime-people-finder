@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -23,17 +21,16 @@ public class ViewPeopleServlet extends HttpServlet implements ApplicationContext
 
 	private static final long serialVersionUID = 3793048689633131588L;
 
-	private static final Log log = LogFactory.getLog(ViewPeopleServlet.class);
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		List<ContextNode> list = new IteratorListMaker<ContextNode> (graph.getRootContextNode().getContextNodes()).list();
-		
+
 		for (Iterator<ContextNode> i = list.iterator(); i.hasNext(); ) {
-			
+
 			ContextNode c = i.next();
-			if (! c.getXDIAddress().toString().startsWith("=!:uuid:")) i.remove();
+			if ((! c.getXDIAddress().toString().startsWith("=!:uuid:")) &&
+					(! c.getXDIAddress().toString().startsWith("=!:did:sov:"))) i.remove();
 		}
 
 		request.setAttribute("list", list);

@@ -1,0 +1,37 @@
+* {
+	font-family: sans-serif;
+}
+
+button {
+	padding: 5px;
+}
+
+pre {
+	font-family: Courier New, monospace;
+}
+
+h2 {
+	border-left: 2px solid lightgray;
+	border-bottom: 2px solid gray;
+	padding: 5px;
+}
+
+span.code {
+	font-family: Courier New, Courier, monospace;
+	background-color: #eee;
+}
+
+a {
+	color: red;
+}
+
+textarea {
+	font-family: Courier New, Courier, monospace;
+	font-size: 10pt;
+}
+
+.grayscale {
+	filter: gray; /* IE6-9 */
+	filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+	-webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
