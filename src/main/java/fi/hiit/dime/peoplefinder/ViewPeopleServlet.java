@@ -44,7 +44,7 @@ public class ViewPeopleServlet extends HttpServlet implements ApplicationContext
 			JsonObject jsonProfile = new JsonObject();
 			JsonArray jsonTags = new JsonArray();
 
-			jsonProfile.addProperty("address", c.getXDIAddress().toString());
+			jsonProfile.addProperty("address", c.getXDIAddress().getFirstXDIArc().toString());
 
 			for (LiteralNode l : c.getDeepContextNode(XDI_ADD_TAGS).getAllLiteralNodes())
 				jsonTags.add(new JsonPrimitive(l.getLiteralDataString()));

@@ -41,7 +41,7 @@ function populate() {
 			var btn = $("<div style=\"float:right;\"><input style=\"padding:10px\" type=\"button\" value=\"Connect\"></div>");
 			var tags = data[i].tags;
 			var div = $("<div style=\"border:2px solid black; margin:10px; padding:10px;\"></div>");
-			var p = $("<p><b>Address:</b> " + address + "</p>");
+			var p = $("<p><b>DID:</b> " + address + "</p>");
 			var p2 = $("<p></p>");
 			p2.attr("style","clear:both;");
 			div.append(img);
