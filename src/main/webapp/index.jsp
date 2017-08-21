@@ -37,8 +37,8 @@ function populate() {
 		$('#plist').empty();
 		for (i in data) {
 			var address = data[i].address;
-			var img = $("<img src=\"/images/logo-dime.jpg\" style=\"float:right\" height=\"60\">");
-			var btn = $("<div style=\"float:right;\"><input style=\"padding:10px\" type=\"button\" value=\"Connect\"></div>");
+			var img = $("<img src=\"/images/logo-dime.png\" style=\"float:right\" height=\"60\">");
+			var btn = $("<div style=\"float:right;\"><input style=\"padding:10px;margin-right:20px\" type=\"button\" value=\"Connect\"></div>");
 			var tags = data[i].tags;
 			var div = $("<div style=\"border:2px solid black; margin:10px; padding:10px;\"></div>");
 			var p = $("<p><b>DID:</b> " + address + "</p>");
@@ -93,7 +93,7 @@ function hide() {
 
 <body style="padding:20px">
 
-<img src="/images/logo-dime.jpg" style="float:left" height="60">
+<img src="/images/logo-dime.png" style="float:left" height="60">
 
 <h1>People Finder</h1>
 
