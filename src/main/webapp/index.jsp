@@ -93,7 +93,8 @@ function hide() {
 
 <body style="padding:20px">
 
-<img src="/images/logo-dime.png" style="float:left" height="60">
+<img src="/images/logo-dime.png" style="float:left;margin-right:20px" height="60">
+<div style="float:right">powered by... <img src="/images/logo-sovrin.png" style="margin-right:20px"></div>
 
 <h1>People Finder</h1>
 
